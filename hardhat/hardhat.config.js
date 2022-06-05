@@ -16,6 +16,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+const fs = require('fs');
+const mneomic = fs.readFileSync(".secret").toString().trim();
 module.exports = {
   solidity: "0.8.4",
+  networks:{
+    rinkeby:{
+      url:"https://rinkeby.infura.io/v3/ecb5411c9c1c44ecb750ac030867410e",
+      accounts:[mneomic]
+    }
+   }
 };
